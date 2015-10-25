@@ -21,7 +21,6 @@ To get quickly up and running, run the following commands in the frontend folder
 - gulp build (or "gulp build-watch", "gulp build-watch-resources" if you want to start to write your own code, see below for the difference) 
 
 After you have started the Spring Boot Application, you can navigate to the following simple example applications:
-
 localhost:8080/app/index-welcome.html  (Hello World)
 localhost:8080/app/index.html (Cheap Booking Com)
 localhost:8080/app/root (Cheap Booking Com with cheap routing)
@@ -78,10 +77,6 @@ If you right-click on your gulpfile.js, you can get a list of gulp tasks by clic
 For the configuration of VS Code, you can have a look here: https://code.visualstudio.com/Docs/languages/typescript. For running tasks in VS Code, go here https://code.visualstudio.com/docs/editor/tasks. It is also able to run Gulp tasks.
 
 Further reading 
-
-Ionic 2: mobile & angular 2
-[]
-
 
 Angular 2
 - [angular.io](https://angular.io/) (API, Developer Guides, Tutorial are getting up to scratch) 
