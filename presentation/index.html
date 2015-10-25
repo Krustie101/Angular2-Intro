@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Angular 2</title>
+
+		<meta name="description" content="Een inleiding to Angular 2 - stand van zaken">
+		<meta name="author" content="Johan Kustermans">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<!--link rel="stylesheet" href="lib/css/zenburn.css"-->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Introduction to Angular 2</h1>
+					
+					<p>
+						<small>Door Johan Kustermans</small>
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Core concepts</h2>
+						<ul>
+							<li class="fragment">Built for speed</li>
+							<li class="fragment">Structured (multi) language</li>
+							<li class="fragment">Components <span class="fragment">&amp; Directives</span> </li>
+							<li class="fragment">Dependency Injection</li>
+							<li class="fragment">Data & event binding</li>
+						</ul>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h4>Project Structure</h4>
+						<table>
+							<tr class="fragment">
+								<td>src/</td>
+								<td></td>
+								<td>typescript sources &amp; html templates</td>
+							</tr>
+							<tr class="fragment">
+								<td style='color:green'>node_modules/</td>
+								<td></td>
+								<td>downloaded libraries (~ npm install angular2)</td>
+							</tr>
+							<tr class="fragment">
+								<td style='color:red'>distribution/</td>
+								<td>&nbsp;&nbsp;</td>
+								<td>transpiled js, html, libraries</td>
+							</tr>
+							<tr class="fragment">
+								<td style='color:blue'>typings/</td>
+								<td></td>
+								<td>typescript definitions</td>
+							</tr>
+							<tr class="fragment">
+								<td style='color:red'>gulpfile.js</td>
+								<td></td>
+								<td>build file</td>
+							</tr>
+							<tr class="fragment">
+								<td style='color:green'>package.json</td>
+								<td></td>
+								<td>configures dependencies</td>
+							</tr>
+							<tr class="fragment">
+								<td style='color:blue'>tsconfig.json</td>
+								<td></td>
+								<td>configures typescript compiler</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<h4>Source</h4>
+						<dl>
+							<dt><span style='color:green'>booking-com/</span>
+								<dd><span style='color:green'>model/</span><br/>
+									&nbsp; &nbsp; &nbsp;booking.ts <span style='color:red' class="fragment" data-fragment-index="2" >:&nbsp; module 'booking-com/model/booking'</span>
+								</dd>
+								<dd><span style='color:green'>component/</span><br/>
+									&nbsp; &nbsp; &nbsp;booking_proposal_viewer.ts
+								</dd>
+								<dd>main.html</dd>
+								<dd>main.ts <span style='color:red' class="fragment" data-fragment-index="1">:&nbsp; module 'booking-com/main'</span></dd>
+							</dt>
+						</dl>	
+					</section>
+					<section>
+					<h4>index.html</h4>
+					<div style="text-align:left">
+					<p class="fragment"><span style='color:red'>&lt;body&gt;</span><span style='color:blue'>&lt;app&gt;</span>Loading application ...<span style='color:blue'>&lt;/app&gt;</span><span style='color:red'>&lt;/body&gt;</span></p>
+<p class="fragment">
+<br><span style='color:green'>&lt;!-- load & configure System  module loader --&gt;</span><br>
+<span style='color:red'>&lt;script</span> src=&quot;lib/system-csp-production.js&quot;<span style='color:red'>&gt;&lt;/script&gt;</span><br>
+<span style='color:red'>&lt;script&gt;</span>System.config()<span style='color:red'>&lt;/script&gt;</span><br><br>
+</p>
+
+<p class="fragment">
+<span style='color:green'>&lt;!-- load the Angular 2 library &amp; start the application  --&gt;</span>
+<br><span style='color:red'>&lt;script</span> src=&quot;lib/angular2.dev.js&quot;<span style='color:red'>&gt;&lt;/script&gt</span>
+<br><span style='color:red'>&lt;script&gt;</span>System.import('booking-com/main')<span style='color:red'>&lt;/script&gt;</span>
+</p>
+</div>
+					</section>
+					<section>
+<table   style="border-collapse:collapse" width="900">
+<tr style="padding:0">
+<td style="padding:0px"><span style="font-size:large">main.ts</span></td>
+<td style="padding:0px"><pre><code class="typescript">import {bootstrap, Component, NgIf} from 'angular2/angular2';
+
+@Component({
+	selector: 'app',
+	templateUrl: 'booking-com/main.html',
+	directives: [NgIf]
+})
+export class Application {
+
+	public name : String = null;
+	
+	public handleClick() : void {
+		this.name = "World!";
+	}
+
+}
+
+bootstrap(Application);</code></pre>
+</td>
+</tr>
+<tr style="padding:0">
+<td style="padding:0"><span style="font-size:large">main.html</span></td>
+<td style="padding:0"><pre><code class="html">&lt;button (click)="handleClick()"&gt;Click Me&lt;/button&gt;
+<br>&lt;div *ng-if="name!=null"&gt;Hello, {{name}}&lt;/div&gt;</code></pre>
+</td>
+</tr>
+</table>
+				
+					</section>
+
+				<!-- Example of nested vertical slides -->
+				</section>	
+				<section>	
+					<section>
+						<h2>Components</h2>
+					</section>
+					<section>		
+					<table ><tr>	
+					<td style="vertical-align:top">	
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="" pagealignment="center" x="0px" y="0px" width="450px" height="595px" viewBox="0 0 450 595"   enable-background="new 0 0 450 595" xml:space="preserve"><defs></defs><g type="LAYER" name="workspace" id="workspace" locked="true"></g><g type="LAYER" name="Layer 01" id="Layer 01"><path transform="matrix(1 0 0 1 87.96120689654953 163.40517241379297)" width="149.4827586206905" height="64.48275862068962" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-1.7053025658242404e-13,0 L149.48275862069033,0 L149.48275862069033,64.48275862068962 L-1.7053025658242404e-13,64.48275862068962 L-1.7053025658242404e-13,0 Z "></path><text type="textBox" transform="matrix(0.9999999999999998 0 0 1 97.52718534539133 172.9310344827587)" width="137.7185043097797" height="44" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Booking</tspan><tspan x="0" y="42">Search Screen</tspan></text><path transform="matrix(1 0 0 1 184.6853448275831 265.25862068965506)" width="177.32758620689998" height="64.48275862068965" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-3.410605131648481e-13,0 L177.32758620689964,0 L177.32758620689964,64.48275862068965 L-3.410605131648481e-13,64.48275862068965 L-3.410605131648481e-13,0 Z "></path><text type="textBox" transform="matrix(1.0000000000000007 0 0 1 194.25132327642467 274.78448275862087)" width="162.63229741323033" height="44" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Booking Proposal</tspan><tspan x="0" y="42">List Viewer</tspan></text><path transform="matrix(1 0 0 1 47.65948275861723 265.25862068965523)" width="90.12931034482983" height="64.48275862068965" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-1.1368683772161603e-13,-5.684341886080802e-14 L90.12931034482972,-5.684341886080802e-14 L90.12931034482972,64.4827586206896 L-1.1368683772161603e-13,64.4827586206896 L-1.1368683772161603e-13,-5.684341886080802e-14 Z "></path><text type="textBox" transform="matrix(0.9999999999999997 0 0 1 57.225461207459034 274.784482758621)" width="76.8995387925396" height="44" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Booking</tspan><tspan x="0" y="42">Filter</tspan></text><path transform="matrix(1 0 0 1 163.43534482758616 121.63793103448273)" height="41.76724137931032" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L0,41.76724137931032 "></path><path transform="matrix(1 0 0 1 130.4612068965517 227.88793103448256)" width="31.508620689655174" height="37.37068965517258" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L-31.508620689655174,37.37068965517258 "></path><path transform="matrix(1 0 0 1 198.6077586206896 227.88793103448256)" width="46.163793103448256" height="37.370689655172555" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L46.163793103448256,37.370689655172555 "></path><path transform="matrix(1 0 0 1 201.5387931034482 330.4741379310344)" width="0.7327586206896513" height="173.66379310344826" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L0.7327586206896513,173.66379310344826 "></path><path transform="matrix(1 0 0 1 201.73979621592082 380.3101514491107)" width="29.10934171510894" height="0.008427311179730168" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L29.10934171510894,-0.008427311179730168 "></path><path transform="matrix(1 0 0 1 202.4725548366104 442.5946342077319)" width="29.10934171510894" height="0.008427311179730168" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L29.10934171510894,-0.008427311179730168 "></path><path transform="matrix(1 0 0 1 203.20531345730006 502.6808411042837)" width="29.10934171510894" height="0.008427311179730168" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L29.10934171510894,-0.008427311179730168 "></path><path transform="matrix(1 0 0 1 230.84913793102993 358.3189655172414)" width="165.60344827586596" height="45.431034482758605" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-2.2737367544323206e-13,-2.8421709430404007e-13 L165.60344827586573,-2.8421709430404007e-13 L165.60344827586573,45.43103448275832 L-2.2737367544323206e-13,45.43103448275832 L-2.2737367544323206e-13,-2.8421709430404007e-13 Z "></path><text type="textBox" transform="matrix(0.9999999999999994 0 0 1 242.61339224194109 367.8448275862072)" width="155.3047112063341" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Proposal Viewer</tspan></text><path transform="matrix(1 0 0 1 231.5818965517181 419.1379310344832)" width="165.60344827586596" height="45.431034482758605" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-2.2737367544323206e-13,-2.8421709430404007e-13 L165.60344827586573,-2.8421709430404007e-13 L165.60344827586573,45.43103448275832 L-2.2737367544323206e-13,45.43103448275832 L-2.2737367544323206e-13,-2.8421709430404007e-13 Z "></path><text type="textBox" transform="matrix(0.9999999999999994 0 0 1 243.34615086262932 428.663793103449)" width="155.3047112063341" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Proposal Viewer</tspan></text><path transform="matrix(1 0 0 1 230.84913793102692 480.6896551724145)" width="165.60344827586596" height="45.431034482758605" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-2.2737367544323206e-13,-2.8421709430404007e-13 L165.60344827586573,-2.8421709430404007e-13 L165.60344827586573,45.43103448275832 L-2.2737367544323206e-13,45.43103448275832 L-2.2737367544323206e-13,-2.8421709430404007e-13 Z "></path><text type="textBox" transform="matrix(0.9999999999999994 0 0 1 242.61339224193807 490.2155172413802)" width="155.3047112063341" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Proposal Viewer</tspan></text><path transform="matrix(1 0 0 1 101.15086206896461 57.15517241379306)" width="127.49999999999994" height="64.48275862068967" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-1.1368683772161603e-13,-1.4210854715202004e-14 L127.49999999999983,-1.4210854715202004e-14 L127.49999999999983,64.48275862068965 L-1.1368683772161603e-13,64.48275862068965 L-1.1368683772161603e-13,-1.4210854715202004e-14 Z "></path><text type="textBox" transform="matrix(0.9999999999999998 0 0 1 131.19396551724077 66.68103448275883)" width="75.47413793103493" height="44" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Booking</tspan><tspan x="0" y="42">App</tspan></text></g></svg>
+					</td>
+					<td style="vertical-align:top;padding-top:40px">
+						<div>
+							<span class="fragment">Each Component</span><br><br>
+							<ul>
+								<li class="fragment">Self Describing / Encapsulated</li>
+								<li class="fragment">View</li>
+								<li class="fragment">Well defined API: inputs &amp; outputs</li>
+								<li class="fragment">Participates in Dependency Injection</li>
+								<li class="fragment">Lifecycle aware</li>
+							</ul>
+						</div>
+					</td>
+					</tr>
+					</table>
+				
+					
+			
+				</section>
+									<section>
+					<h4>main.ts</h4>
+						<pre><code class="html">&lt;booking-search /&gt;</code></pre>
+					
+					<h4>booking_search.ts<h4>
+<pre><code class="html">&lt;booking-filter /&gt;
+&lt;booking-proposals /&gt;</pre></code>
+</section>
+				
+				
+				<section>
+						<h5>booking_proposal_viewer.ts</h5>
+						<pre><code style="html">&lt;div *ng-if=&quot;bookingProposal != null&quot; &gt;
+            {{bookingProposal.hotel.name}} 
+            Price from: {{bookingProposal.priceFrom}}
+&lt;/div&gt;
+&lt;button (click)=&quot;handleClick()&quot;&gt;Reserve Room&lt;/button&gt;
+</code></pre>
+	<pre><code style="typescript">@Component({
+    selector: 'booking-proposal-viewer',
+    template:`...`,
+    directives: [CORE_DIRECTIVES]
+})
+class BookingProposalViewer {
+
+    @Input() public bookingProposal : BookingProposal;
+
+    @Output() public reserveRoom : EventEmitter = new EventEmitter();
+
+    public handleClick() : void {
+        this.reserveRoom.next(this.bookingProposal);
+    }
+}</code></pre>
+					</section>
+
+						<section>
+						<h5>booking_proposals.ts (template driven)</h5>
+						<pre>
+						<code style="html">&lt;table&gt;
+   &lt;tr *ng-for=&quot;#proposal of proposals&quot;&gt;
+     &lt;td&gt;&lt;booking-proposal-viewer [booking-proposal]=&quot;proposal&quot; 
+				  (reserve-room)=&quot;reserveRoom($event)&quot;/&gt;&lt;/td&gt;
+   &lt;/tr&gt;
+&lt;/table&gt;`</code></pre>
+<pre><code style="typescript">@Component({
+  selector: 'booking-proposals',
+  template:`...`,
+  directives: [BookingProposalViewer,CORE_DIRECTIVES]
+})
+class BookingProposals {
+
+    @Input() public proposals : Array&lt;BookingProposal&gt; = [];
+
+    public reserveRoom(proposal:BookingProposal) : void {
+        alert('Reserve room in hotel:' + proposal.hotel.name)
+    }
+
+}</code></pre>
+					</section>
+
+
+
+				</section>
+				
+								<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Dependency Injection</h2>
+					</section>
+					<section>
+					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="" pagealignment="none" x="0px" y="0px" width="842px" height="595px" viewBox="0 0 842 595" enable-background="new 0 0 842 595" xml:space="preserve"><defs></defs><g type="LAYER" name="workspace" id="workspace" locked="true"></g><g type="LAYER" name="Layer 01" id="Layer 01"><path transform="matrix(1 0 0 1 87.96120689654953 163.40517241379297)" width="149.4827586206905" height="64.48275862068962" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-1.7053025658242404e-13,0 L149.48275862069033,0 L149.48275862069033,64.48275862068962 L-1.7053025658242404e-13,64.48275862068962 L-1.7053025658242404e-13,0 Z "></path><text type="textBox" transform="matrix(0.9999999999999998 0 0 1 97.52718534539133 172.9310344827587)" width="137.7185043097797" height="44" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Booking</tspan><tspan x="0" y="42">Search Screen</tspan></text><path transform="matrix(1 0 0 1 184.6853448275831 265.25862068965506)" width="177.32758620689998" height="64.48275862068965" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-3.410605131648481e-13,0 L177.32758620689964,0 L177.32758620689964,64.48275862068965 L-3.410605131648481e-13,64.48275862068965 L-3.410605131648481e-13,0 Z "></path><text type="textBox" transform="matrix(1.0000000000000007 0 0 1 194.25132327642467 274.78448275862087)" width="162.63229741323033" height="44" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Booking Proposal</tspan><tspan x="0" y="42">List Viewer</tspan></text><path transform="matrix(1 0 0 1 47.65948275861723 265.25862068965523)" width="90.12931034482983" height="64.48275862068965" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-1.1368683772161603e-13,-5.684341886080802e-14 L90.12931034482972,-5.684341886080802e-14 L90.12931034482972,64.4827586206896 L-1.1368683772161603e-13,64.4827586206896 L-1.1368683772161603e-13,-5.684341886080802e-14 Z "></path><text type="textBox" transform="matrix(0.9999999999999997 0 0 1 57.225461207459034 274.784482758621)" width="76.8995387925396" height="44" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Booking</tspan><tspan x="0" y="42">Filter</tspan></text><path transform="matrix(1 0 0 1 163.43534482758616 121.63793103448273)" height="41.76724137931032" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L0,41.76724137931032 "></path><path transform="matrix(1 0 0 1 130.4612068965517 227.88793103448256)" width="31.508620689655174" height="37.37068965517258" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L-31.508620689655174,37.37068965517258 "></path><path transform="matrix(1 0 0 1 198.6077586206896 227.88793103448256)" width="46.163793103448256" height="37.370689655172555" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L46.163793103448256,37.370689655172555 "></path><path transform="matrix(1 0 0 1 201.5387931034482 330.4741379310344)" width="0.7327586206896513" height="173.66379310344826" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L0.7327586206896513,173.66379310344826 "></path><path transform="matrix(1 0 0 1 201.73979621592082 380.3101514491107)" width="29.10934171510894" height="0.008427311179730168" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L29.10934171510894,-0.008427311179730168 "></path><path transform="matrix(1 0 0 1 202.4725548366104 442.5946342077319)" width="29.10934171510894" height="0.008427311179730168" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L29.10934171510894,-0.008427311179730168 "></path><path transform="matrix(1 0 0 1 203.20531345730006 502.6808411042837)" width="29.10934171510894" height="0.008427311179730168" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L29.10934171510894,-0.008427311179730168 "></path><path transform="matrix(1 0 0 1 230.84913793102993 358.3189655172414)" width="165.60344827586596" height="45.431034482758605" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-2.2737367544323206e-13,-2.8421709430404007e-13 L165.60344827586573,-2.8421709430404007e-13 L165.60344827586573,45.43103448275832 L-2.2737367544323206e-13,45.43103448275832 L-2.2737367544323206e-13,-2.8421709430404007e-13 Z "></path><text type="textBox" transform="matrix(0.9999999999999994 0 0 1 242.61339224194109 367.8448275862072)" width="155.3047112063341" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Proposal Viewer</tspan></text><path transform="matrix(1 0 0 1 231.5818965517181 419.1379310344832)" width="165.60344827586596" height="45.431034482758605" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-2.2737367544323206e-13,-2.8421709430404007e-13 L165.60344827586573,-2.8421709430404007e-13 L165.60344827586573,45.43103448275832 L-2.2737367544323206e-13,45.43103448275832 L-2.2737367544323206e-13,-2.8421709430404007e-13 Z "></path><text type="textBox" transform="matrix(0.9999999999999994 0 0 1 243.34615086262932 428.663793103449)" width="155.3047112063341" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Proposal Viewer</tspan></text><path transform="matrix(1 0 0 1 230.84913793102692 480.6896551724145)" width="165.60344827586596" height="45.431034482758605" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-2.2737367544323206e-13,-2.8421709430404007e-13 L165.60344827586573,-2.8421709430404007e-13 L165.60344827586573,45.43103448275832 L-2.2737367544323206e-13,45.43103448275832 L-2.2737367544323206e-13,-2.8421709430404007e-13 Z "></path><text type="textBox" transform="matrix(0.9999999999999994 0 0 1 242.61339224193807 490.2155172413802)" width="155.3047112063341" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Proposal Viewer</tspan></text><path transform="matrix(1 0 0 1 101.15086206896461 57.15517241379306)" width="127.49999999999994" height="64.48275862068967" stroke-width="2" stroke-linejoin="round" stroke="#4B7258" fill="#9ABEBC" d="M-1.1368683772161603e-13,-1.4210854715202004e-14 L127.49999999999983,-1.4210854715202004e-14 L127.49999999999983,64.48275862068965 L-1.1368683772161603e-13,64.48275862068965 L-1.1368683772161603e-13,-1.4210854715202004e-14 Z "></path><text type="textBox" transform="matrix(0.9999999999999998 0 0 1 131.19396551724077 66.68103448275883)" width="75.47413793103493" height="44" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Booking</tspan><tspan x="0" y="42">App</tspan></text><g transform="matrix(1 0 0 1 463.13362068964847 57.1551724137931)"><path transform="matrix(1 0 0 1 40.3017241379323 106.2499999999999)" width="149.4827586206905" height="64.48275862068962" stroke-width="2" stroke-linejoin="round" stroke="#455074" fill="#BE9AB5" d="M-1.7053025658242404e-13,0 L149.48275862069033,0 L149.48275862069033,64.48275862068962 L-1.7053025658242404e-13,64.48275862068962 L-1.7053025658242404e-13,0 Z "></path><text type="textBox" transform="matrix(0.9999999999999998 0 0 1 49.86770258677416 115.7758620689656)" width="137.7185043097797" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="center" text-anchor="middle"><tspan x="68.85925215488984" y="20">Injector</tspan></text><path transform="matrix(1 0 0 1 137.02586206896615 208.10344827586198)" width="177.32758620689998" height="64.48275862068965" stroke-width="2" stroke-linejoin="round" stroke="#455074" fill="#BE9AB5" d="M-3.410605131648481e-13,0 L177.32758620689964,0 L177.32758620689964,64.48275862068965 L-3.410605131648481e-13,64.48275862068965 L-3.410605131648481e-13,0 Z "></path><text type="textBox" transform="matrix(1.0000000000000007 0 0 1 146.59184051780744 217.6293103448278)" width="162.63229741323033" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="center" text-anchor="middle"><tspan x="81.31614870661517" y="20">Injector</tspan></text><path transform="matrix(1 0 0 1 1.1368683772161603e-13 208.10344827586215)" width="90.12931034482983" height="64.48275862068965" stroke-width="2" stroke-linejoin="round" stroke="#455074" fill="#BE9AB5" d="M-1.1368683772161603e-13,-5.684341886080802e-14 L90.12931034482972,-5.684341886080802e-14 L90.12931034482972,64.4827586206896 L-1.1368683772161603e-13,64.4827586206896 L-1.1368683772161603e-13,-5.684341886080802e-14 Z "></path><text type="textBox" transform="matrix(0.9999999999999997 0 0 1 9.565978448841292 217.62931034482813)" width="76.8995387925396" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="center" text-anchor="middle"><tspan x="38.4497693962698" y="20">Injector</tspan></text><path transform="matrix(1 0 0 1 115.77586206896899 64.4827586206897)" height="41.76724137931032" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L0,41.76724137931032 "></path><path transform="matrix(1 0 0 1 82.80172413793434 170.73275862068948)" width="31.508620689655174" height="37.37068965517258" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L-31.508620689655174,37.37068965517258 "></path><path transform="matrix(1 0 0 1 150.9482758620726 170.73275862068948)" width="46.163793103448256" height="37.370689655172555" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L46.163793103448256,37.370689655172555 "></path><path transform="matrix(1 0 0 1 153.8793103448312 273.3189655172414)" width="0.7327586206896513" height="173.66379310344826" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L0.7327586206896513,173.66379310344826 "></path><path transform="matrix(1 0 0 1 154.08031345730376 323.15497903531764)" width="29.10934171510894" height="0.008427311179730168" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L29.10934171510894,-0.008427311179730168 "></path><path transform="matrix(1 0 0 1 154.81307207799318 385.43946179393873)" width="29.10934171510894" height="0.008427311179730168" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L29.10934171510894,-0.008427311179730168 "></path><path transform="matrix(1 0 0 1 155.54583069868272 445.5256686904906)" width="29.10934171510894" height="0.008427311179730168" stroke-width="3" stroke-miterlimit="3" stroke="#3289B3" fill="#54A4D1" d="M0,0 L29.10934171510894,-0.008427311179730168 "></path><path transform="matrix(1 0 0 1 183.1896551724128 301.16379310344826)" width="165.60344827586596" height="45.431034482758605" stroke-width="2" stroke-linejoin="round" stroke="#455074" fill="#BE9AB5" d="M-2.2737367544323206e-13,-2.8421709430404007e-13 L165.60344827586573,-2.8421709430404007e-13 L165.60344827586573,45.43103448275832 L-2.2737367544323206e-13,45.43103448275832 L-2.2737367544323206e-13,-2.8421709430404007e-13 Z "></path><text type="textBox" transform="matrix(0.9999999999999994 0 0 1 194.95390948332374 310.6896551724141)" width="147.24436637875198" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="center" text-anchor="middle"><tspan x="73.62218318937599" y="20">Injector</tspan></text><path transform="matrix(1 0 0 1 183.92241379310076 361.9827586206901)" width="165.60344827586596" height="45.431034482758605" stroke-width="2" stroke-linejoin="round" stroke="#455074" fill="#BE9AB5" d="M-2.2737367544323206e-13,-2.8421709430404007e-13 L165.60344827586573,-2.8421709430404007e-13 L165.60344827586573,45.43103448275832 L-2.2737367544323206e-13,45.43103448275832 L-2.2737367544323206e-13,-2.8421709430404007e-13 Z "></path><text type="textBox" transform="matrix(0.9999999999999994 0 0 1 189.82459913849482 371.50862068965597)" width="155.3047112063341" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="center" text-anchor="middle"><tspan x="77.65235560316705" y="20">Injector</tspan></text><path transform="matrix(1 0 0 1 183.18965517240974 423.53448275862144)" width="165.60344827586596" height="45.431034482758605" stroke-width="2" stroke-linejoin="round" stroke="#455074" fill="#BE9AB5" d="M-2.2737367544323206e-13,-2.8421709430404007e-13 L165.60344827586573,-2.8421709430404007e-13 L165.60344827586573,45.43103448275832 L-2.2737367544323206e-13,45.43103448275832 L-2.2737367544323206e-13,-2.8421709430404007e-13 Z "></path><text type="textBox" transform="matrix(0.9999999999999994 0 0 1 187.62632327642268 433.06034482758713)" width="155.3047112063341" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="center" text-anchor="middle"><tspan x="77.65235560316705" y="20">Injector</tspan></text><path transform="matrix(1 0 0 1 53.491379310347384 0)" width="127.49999999999994" height="64.48275862068967" stroke-width="2" stroke-linejoin="round" stroke="#455074" fill="#BE9AB5" d="M-1.1368683772161603e-13,-1.4210854715202004e-14 L127.49999999999983,-1.4210854715202004e-14 L127.49999999999983,64.48275862068965 L-1.1368683772161603e-13,64.48275862068965 L-1.1368683772161603e-13,-1.4210854715202004e-14 Z "></path><text type="textBox" transform="matrix(0.9999999999999998 0 0 1 83.53448275862365 9.525862068965765)" width="75.47413793103493" height="22" stroke-width="2" stroke-linejoin="round" stroke="none" fill="#000000" font-family="Arial" font-size="20" text-align="left" text-anchor="start"><tspan x="0" y="20">Injector</tspan></text></g></g></svg>
+					</section>
+					<section>
+						<h4>What can be injected?</h4>
+						<ul>
+							<li class="fragment">Platform services: Router, Http, Formbuilder</li>
+							<li class="fragment">Other components</li>
+							<li class="fragment">Custom services</li>
+							<li class="fragment">Dom references</li>
+						</ul>
+					</section>
+					<section>
+						<h4>... everything that is provided</h4>
+						<pre><code style="typescript">bootstrap(Application,[
+    ROUTER_PROVIDERS,provide(APP_BASE_HREF,{useValue:'/app/root'}),
+    HTTP_PROVIDERS,
+    provide(BookingService,{useClass:RestBookingService})
+]);
+						</code></pre>
+						<pre><code style="typescript">@Component({
+    ...								
+  providers: [provide(BookingService,{useClass:RestBookingService})]					
+})
+class BookingScreen {
+
+}</code></pre>
+					</section>
+				<section>
+				
+						<h4>Constructor Injection</h4>
+						<pre><code style="typescript">@Component({  })
+class BookingSearchScreen {
+						
+  private bookingService : BookingService;
+						
+  constructor(bookingService:BookingService){
+    this.bookingService = bookingService;
+  }
+	
+  public findBookingProposals(bookingCriteria:BookingCriterias) : void {
+    this.bookingService.findBookingProposals(bookingCriteria);
+  }
+	
+}</code></pre>
+
+<pre><code style="typescript" >@Injectable() 
+class BookingService {
+						
+  constructor(private http:Http){}
+	
+  public findBookingProposals(bookingCriteria:BookingCriterias) : void {
+    http.get(.....);
+  }
+	
+}
+
+
+</code></pre>
+
+				</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Forms</h2>
+					</section>
+					
+				<section>
+				
+					<dl>
+					<dt>AbstractControl
+						<dd>
+						<ul>
+							<li>value &amp; valueChanges</li>
+							<li>validator : AbstractControl => error</li>
+							<li>errors</li>
+						</ul>
+						</dd>
+					</dt>
+					<dt>&nbsp;</dt>
+					<dt class="fragment" data-fragment-index="1">Control : basic input</dt>
+					<dt>&nbsp;</dt>
+					<dt class="fragment" data-fragment-index="2">ControlGroup :
+						<dd class="fragment" data-fragment-index="2">collection of AbstractControl's
+					</dd>	</dt>
+				</dl>		
+						
+					
+					
+				</section>	
+					
+<section>
+<h4>booking_filter.ts (template driven)</h4>
+<pre><code class="html">&lt;form #f="form"&gt;
+	&lt;label &gt;Location:&lt;/label&gt;
+	&lt;input type=&quot;text&quot; [ng-model]=&quot;criteria.location&quot; (ng-model-change)=&quot;criteria.location=$event&quot
+		required minlength="3"	&gt;
+
+	&lt;label&gt; Check In Date:&lt;/label&gt;
+	&lt;input type=&quot;date&quot; [(ng-model)]=&quot;criteria.checkInDate&quot;;&gt;
+
+	&lt;button (click)=&quot;search(f)&quot;&gt;Find Booking&lt;/button&gt;
+  &lt;/form&gt;
+</code></pre>
+<pre><code class="typescript">@Component({
+    selector: 'booking-filter',
+    template: `...` ,
+    directives: [FORM_DIRECTIVES,RequiredValidator,MinLengthValidator]
+})
+class BookingFilter {
+
+	public criteria : BookingCriteria= new BookingCriteria();
+
+	constructor(bookingService:BookingService) {};
+	
+    public search(f:NgForm) : void {
+       if (f.valid) bookingService.searchBookings(criteria);
+    }
+
+}
+</code></pre>
+	</section>
+
+					<section>
+
+<h4>booking_filter.ts (model driven)</h4>
+<pre><code class="html">&lt;form [ng-form-model]="criteriaForm" &gt;
+	&lt;label &gt;Location:&lt;/label&gt;
+	&lt;input type=&quot;text&quot; [(ng-model)]=&quot;criteria.location&quot; ng-control="location"
+
+	&lt;label&gt; Check In Date:&lt;/label&gt;
+	&lt;input type=&quot;date&quot; [(ng-model)]=&quot;criteria.checkInDate&quot; ng-control="checkInDate" &gt;
+
+	&lt;button (click)=&quot;search()&quot;&gt;Find Booking&lt;/button&gt;
+  &lt;/form&gt;
+</code></pre>
+<pre><code class="typescript">@Component({
+    selector: 'booking-filter',
+    template: `...` ,
+    directives: [FORM_DIRECTIVES],
+	providers: [FormBuilder]
+})
+class BookingFilter {
+
+	public criteria : BookingCriteria= new BookingCriteria();
+	
+	public criteriaForm : ControlGroup;
+	
+	constructor(formBuilder:FormBuilder,bookingService:BookingService) {
+	  this.criteriaForm = formBuilder.group({
+	   location : ["",Validators.required],
+	   checkInData : []
+	 });
+	};
+	
+	public search() : void {
+	 if (criteriaForm.valid) bookingService.searchBookings(criteria);
+    }
+}
+</code></pre>
+
+
+					</section>
+
+					
+				</section>
+
+				<section>
+					<section>
+						<h2>Component Router</h2>
+					</section>
+					<section>
+						<h4>main.ts<h4>
+<pre><code class="html"><router-outlet></router-outlet></code></pre>
+<pre><code class="typescript">@Component({...})
+@RouteConfig ([
+    {path:'/', component:BookingSearchScreen, as:'BookingSearch'},
+    {path:'/reservation', component:BookingReservation, as:'BookingReservation'}
+])
+class Application { ... }
+</code></pre>
+
+<h4>booking_proposal_viewer.ts<h4><pre><code class="html"><div *ng-if="bookingProposal != null" >
+	<div>{{bookingProposal.hotel.name}}</div>
+	<div>Price from: {{bookingProposal.priceFrom}}</div>
+</div>
+<a [router-link]="['/BookingReservation',
+							{ hotel: bookingProposal.hotel.name, 
+							  checkIn: bookingProposal.criteria.checkIn,
+							  checkOut: bookingProposal.criteria.checkOut, 
+							  persons: bookingProposal.criteria.persons} ]" 	>Reserve Room</a>
+</code></pre>
+<pre><code class="typescript">@Component({...})
+export class BookingProposalViewer {
+
+    @Input() public bookingProposal : BookingProposal;
+
+}
+</code></pre>
+
+					
+					</section>
+<section>
+						<h4>booking_reservation_screen.ts<h4>
+<pre><code class="html"><a [router-link]="['/BookingSearch']">New Search</a>
+</code></pre>
+<pre><code class="typescript">@Component({...})
+export class BookingSearchScreen {
+
+    constructor(routeParameters:RouteParams) {
+			routeParams.get("hotel");
+			routeParams.get("checkIn");
+			routeParams.get("checkOut");
+			routeParams.get("persons");
+	}
+
+}
+</code></pre>
+
+					
+					</section>
+				
+					<section>
+						<h3>Routing properties</h3>
+						<ul>
+							<li class="fragment">Routing lifecycle: CanActivate, OnActivate, CanReuse, OnReuse</li>
+							<li class="fragment">Nested views &amp; child routers</li>
+							<li class="fragment">Multiple router-outlet's : auxiliary routing</li>
+						
+						
+						</ul>
+					
+					
+
+					
+					</section>
+					
+				</section>
+				
+				<section>
+						<h3>Further reading</h4>
+						<ul>
+							<li class="fragment">angular.io (API, Developer Guides, Tutorial)</li>
+							<li class="fragment">github angular (examples, source code, changelogs)</li>
+							<li class="fragment">angular weekly meeting notes, angular js blogspot</li>
+							<li class="fragment">blog Victor Savkin, Pascal Precht</li>
+							<li class="fragment">awesome-angular2, angular2-education</li>
+							<li class="fragment">angular-connect</li>
+						</ul>
+				</section>
+					
+				
+				<section>
+					<h2>Conclusion</h2>
+					<h4>Know is the time to get in</h4>
+				</section>
+
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				width: 1200,
+				
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
