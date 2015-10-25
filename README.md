@@ -77,8 +77,29 @@ If you right-click on your gulpfile.js, you can get a list of gulp tasks by clic
 
 For the configuration of VS Code, you can have a look here: https://code.visualstudio.com/Docs/languages/typescript. For running tasks in VS Code, go here https://code.visualstudio.com/docs/editor/tasks. It is also able to run Gulp tasks.
 
-Further reading (Google is your friend):
+Further reading 
 
+Ionic 2: mobile & angular 2
+[]
+
+
+Angular 2
+- [angular.io](https://angular.io/) (API, Developer Guides, Tutorial are getting up to scratch) 
+- [github angular](https://github.com/angular/angular) (examples, source code, changelogs)
+- [gitter angular](https://gitter.im/angular/angular)
+- [angular weekly meeting notes](https://docs.google.com/document/d/150lerb1LmNLuau_a_EznPV1I1UHMTbEl61t4hZ7ZpS0)
+- [angular js blogspot](http://angularjs.blogspot.be/)
+- blogs: [Victor Savkin](http://victorsavkin.com/), [Pascal Precht](http://blog.thoughtram.io/)
+- Curated list of angular 2 links: [awesome-angular2](https://angular-class.github.io/awesome-angular2/),     [angular2-education](https://github.com/timjacobi/angular2-education)
+- [angular-connect](http://angularconnect.com/) 
+
+[Ionic 2](http://ionic.io/2): angular 2 on mobile
+You need to use "npm install ionic-framework"
+
+Typescript:
+- [Typescript Language](http://www.typescriptlang.org/) (tutorial, handbook)
+- [Typescript github](https://github.com/Microsoft/TypeScript/) (+wiki)
+- [Changelog] (https://github.com/Microsoft/TypeScript/wiki/What's-new-in-TypeScript)
 
 
 
