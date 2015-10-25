@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/app/" />
+    <title>Angular 2 intro</title>
+</head>
+
+<body style="padding:10px">
+   <welcome-app>Loading application ...</welcome-app>
+</body>
+
+<!-- ES6-related imports -->
+<script src="lib/system-csp-production.js"></script>
+
+
+<script>
+    //configure system loader
+    System.config({defaultJSExtensions: true});
+</script>
+<script src="lib/angular2.dev.js"></script>
+
+<script>
+    //bootstrap the Angular2 application
+    System.import('booking-com/main-welcome');
+</script>
+
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/app/" />
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/bootstrap-theme.min.css" />
+    <link rel="font" href="lib/glyphicons-halflings-regular.ttf" />
+    <title>Angular 2 intro</title>
+
+    <style>
+        .ng-invalid.ng-touched {
+            background: #FF8080;
+        }
+
+        .table-bordered td {
+            padding: 10px;
+        }
+
+
+    </style>
+
+</head>
+
+<body style="padding:10px">
+   <router-app>Loading application ...</router-app>
+</body>
+
+<!-- ES6-related imports -->
+<script src="lib/system-csp-production.js"></script>
+
+
+<script>
+    //configure system loader
+    System.config({defaultJSExtensions: true});
+</script>
+<script src="lib/angular2.dev.js"></script>
+<script src="lib/router.dev.js"></script>
+<script src="lib/http.dev.js"></script>
+
+<script>
+    //bootstrap the Angular2 application
+    System.import('booking-com/main-router');
+</script>
+
+</html>

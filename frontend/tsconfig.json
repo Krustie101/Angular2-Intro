@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5",
+        "module": "system",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "sourceMap": true,
+        "sourceRoot": "/app-src",
+        "outDir": "dist",
+        "rootDir": "src"
+    },
+	"exclude" : [
+		"node_modules"
+	]
+
+}
