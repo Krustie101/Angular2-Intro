@@ -1,7 +1,7 @@
 {
   "name": "angular2-intro",
   "version": "1.0.0-SNAPSHOT",
-  "description": "An angular 2 demo project",
+  "description": "An angular 2 demo project with Spring Boot",
   "repository": {
     "type": "git",
     "url": "https://github.com/Krustie101/Angular2-Intro.git"
