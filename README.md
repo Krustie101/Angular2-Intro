@@ -25,7 +25,7 @@ After you have started the Spring Boot Application, you can navigate to the foll
 - localhost:8080/app/index.html (Cheap Booking Com)
 - localhost:8080/app/root (Cheap Booking Com with cheap routing)
 
-For the hotels you should take 'Dublin' or 'Killarney'.
+For the location you should take 'Dublin' or 'Killarney'.
  
 
 If you are not familiar with javascript or typescript development, the followin explanation might be useful.
@@ -33,6 +33,8 @@ If you are not familiar with javascript or typescript development, the followin 
 package.json contains some information about the project and the dependencies of the project on javascrip & css libraries (the dev-dependencies are dependencies on build tools and you can ignore them for now)
 
 First run "npm install" in the frontend directory. This will use package.json to download the necessary javascript & css libraries to the node_modules folder. If there is an update of angular 2, you can run "npm install angular2 --save", this will install the new version but also update package.json with the new version number thanks to the "--save" option. For more information about the version system used by npm, you can go here https://github.com/npm/node-semver.
+
+Do not forget to run "gulp setup-typings" and "gulp build" after an npm update. 
 
 The typescript compiler and your IDE will need typescript definition files for your javascript libraries. In the case of angular2 (and rx) these typescript definitions have been downloaded during npm install so you only need to copy them to the typings folder in your frontend folder.
 
