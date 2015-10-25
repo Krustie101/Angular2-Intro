@@ -72,7 +72,12 @@ I had good experiences concerning typescript code completion with the following 
 
 I have no experience with Visual Studio, but expect it to offer good support as well. Eclipse seems to be lagging: two typescript plugins that I know of are eclipse-typescript from palantir and typecs. I did not look at them for a few months now because the solution offered by Webstorm & VS Code where keeping up better with the pace of typescript changes.
 
-Eclipse seems to be lagging 
+In order to start develping in Webstorm 11 open the frontend folder as a project, opening the main folder as a project got the typescript compiler confused. Then you just need to go the Typescript configuration in "File -> Settings" and configure to use tsconfig.json (2 checkboxes), enable the typescript compiler and instruct it to track changes. 
+If you right-click on your gulpfile.js, you can get a list of gulp tasks by clicking "Show Gulp Tasks". Now you are good to go.
+
+For the configuration of VS Code, you can have a look here: https://code.visualstudio.com/Docs/languages/typescript. For running tasks in VS Code, go here https://code.visualstudio.com/docs/editor/tasks. It is also able to run Gulp tasks.
+
+Further reading (Google is your friend):
 
 
 
