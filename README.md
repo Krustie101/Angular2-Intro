@@ -10,10 +10,17 @@ The main project consists of two sub projects
 In order to run the application you will first need to set up the frontend project. In order to do so, you first have to follow these steps.
 
 - Install node.js  
-- Install typescript globally: npm install typescript -g. You can run the typescript compiler with tsc from now on.
+- Install typescript globally: npm install typescript -g. You invoke the typescript compiler by using "tsc" from now on.
 - Install gulp globally: npm install gulp -g. 
 
 After that you need to go to the frontend project where you will find 3 configuration files: gulp.json, package.json,, tsconfig.json.
+
+package.json contains some information about the project and the dependencies of the project on javascrip & css libraries (the dev-dependencies are dependencies on build tools and you can ignore them for now)
+
+First run "npm install" in the frontend directory. This will use package.json to download the necessary javascript & css libraries to the node_modules folder. If there is an update of angular 2, you can run "npm install angular2 --save", this will install the new version but also updates the package.json file with the new version number. For information about the used version system, you can go here https://github.com/npm/node-semver.
+
+
+
 
 
  
