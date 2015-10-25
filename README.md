@@ -1,7 +1,7 @@
 # Angular2-Intro
 This repo contains a demo project used for a presentation introducing angular 2 & typescript intended for Java developers so the explanation about the frontend setup will be long-winded (the project itself originated from https://github.com/pkozlowski-opensource/ng2-play). The project is set up to run with Spring Boot. For the moment, the Spring Boot application only serves the angular 2 application, but soon it will also be used as a rest service controller. I will assume that you are familiar with Maven & Spring Boot, all major Java IDE's have excellent support for them anyway.
 
-For now, I want to focus on building angular 2 applications and try to keep the build & module loading process as simple as possible.
+For now, I want to focus on building angular 2 applications and try to keep the build & module loading process as simple as possible. 
 
 The main project consists of two sub projects
 - frontend: contains the Angular 2 code   
@@ -55,7 +55,24 @@ In short, in order to be abled to start and check out the application you need t
 
 The Spring Boot application is configured to pick up the application files in the "dist" folder and, for debugging purposes, the source files in the "src" folder of the front end project. Have a look at the class WebMvcConfiguration.
 
-After you have started the Spring Boot Application, you can navigate to following simple examples mentioned in the beginning.
+After you have started the Spring Boot Application, you can navigate to the simple examples mentioned in the beginning.
+
+If you open Developer Tools in your browser you should see the typescript files in the "booking-com/app-src" directory, they can be used for debugging purposes. It is also possible to debug typescript files from Webstorm but it needs further setup.
+
+Now to the other type of build tasks:
+- build-watch
+- build-watch-resources
+Both of them will after the clean build watch for changes in html files in the "src" folder of your frontend project and copy any changed files to the "dist" folder. That is all that the second will do.
+
+The first one will instruct the tsc command to watch for changes in the ts files and perform an incremental compilation on any change. You will not need this if your IDE does the incremental compilation itself based on the tsconfig.json file (they will also delegate tot the tsc command anyhow), in this case running "build-watch-resources" is enough during development. 
+
+I had good experiences concerning typescript code completion with the following IDE's:
+- Webstorm 11 (pre release). This also has good completion & highlighting for angular 2 in html files and inline templates. Refactoring was also a breeze. It also has good support for Gulp.
+- Visual Studio Code. This is a free editor based on Atom that focuses on web development. Code completion for typescript is very good, but there is no completion or highlighing for angular 2 in inline templates.
+
+I have no experience with Visual Studio, but expect it to offer good support as well. Eclipse seems to be lagging: two typescript plugins that I know of are eclipse-typescript from palantir and typecs. I did not look at them for a few months now because the solution offered by Webstorm & VS Code where keeping up better with the pace of typescript changes.
+
+Eclipse seems to be lagging 
 
 
 
