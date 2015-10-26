@@ -9,7 +9,7 @@ The main project consists of two sub projects
 - frontend: contains the Angular 2 code   
 - backend:  a Maven project that contains the Spring Boot application
 
-## Quick start
+##Quick start
 
 In order to run the application you will first need to set up the frontend project. In order to do so, you first have to follow these steps.
 
@@ -31,7 +31,7 @@ After you have started the Spring Boot Application, you can navigate to the foll
 
 For the location you should take 'Dublin' or 'Killarney'.
  
-## Further explanation
+##Further explanation
 
 If you are not familiar with javascript or typescript development, the following explanation might be useful.
 
@@ -83,7 +83,7 @@ If you right-click on your gulpfile.js, you can get a list of gulp tasks by clic
 
 For the configuration of VS Code, you can have a look here: https://code.visualstudio.com/Docs/languages/typescript. For running tasks in VS Code, go here https://code.visualstudio.com/docs/editor/tasks. It is also able to run Gulp tasks.
 
-Further reading 
+##Further reading 
 
 Angular 2
 - [angular.io](https://angular.io/) (API, Developer Guides, Tutorial are getting up to scratch) 
@@ -96,6 +96,7 @@ Angular 2
 - [angular-connect](http://angularconnect.com/) 
 
 [Ionic 2](http://ionic.io/2): angular 2 on mobile.
+
 You need to use `npm install ionic-framework`
 
 Typescript:
