@@ -95,7 +95,7 @@ Angular 2
 - Curated list of angular 2 links: [awesome-angular2](https://angular-class.github.io/awesome-angular2/),     [angular2-education](https://github.com/timjacobi/angular2-education)
 - [angular-connect](http://angularconnect.com/) 
 
-[Ionic 2](http://ionic.io/2): angular 2 on mobile.
+[Ionic 2](http://ionic.io/2): angular 2 on mobile.  
 You need to use `npm install ionic-framework`
 
 Typescript:
