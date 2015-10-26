@@ -3,11 +3,13 @@ This repo contains a demo project used for a presentation introducing angular 2 
 
 A quick starter skeleton version can be found at [Angular2-SpringBoot](https://github.com/Krustie101/Angular2-SpringBoot).
 
-For now, I want to focus on building angular 2 applications and try to keep the build & module loading process as simple as possible. 
+For now, I want to focus on developing angular 2 applications and try to keep the build & module loading process as simple as possible. So no webpack or jspm at the moment. 
 
 The main project consists of two sub projects
 - frontend: contains the Angular 2 code   
 - backend:  a Maven project that contains the Spring Boot application
+
+## Quick start
 
 In order to run the application you will first need to set up the frontend project. In order to do so, you first have to follow these steps.
 
@@ -29,8 +31,9 @@ After you have started the Spring Boot Application, you can navigate to the foll
 
 For the location you should take 'Dublin' or 'Killarney'.
  
+## Further explanation
 
-If you are not familiar with javascript or typescript development, the followin explanation might be useful.
+If you are not familiar with javascript or typescript development, the following explanation might be useful.
 
 package.json contains some information about the project and the dependencies of the project on javascrip & css libraries (the dev-dependencies are dependencies on build tools and you can ignore them for now)
 
