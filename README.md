@@ -3,7 +3,7 @@ This repo contains a demo project used for a presentation introducing angular 2 
 
 A quick starter skeleton version can be found at [Angular2-SpringBoot](https://github.com/Krustie101/Angular2-SpringBoot).
 
-For now, I want to focus on developing angular 2 applications and try to keep the build & module loading process as simple as possible. So no webpack or jspm at the moment. 
+For now, I want to focus on developing angular 2 applications and try to keep the build & module loading process as simple as possible. So no webpack or jspm at the moment, these are moving targets anyway. 
 
 The main project consists of two sub projects
 - frontend: contains the Angular 2 code   
@@ -103,7 +103,8 @@ Typescript:
 - [Typescript github](https://github.com/Microsoft/TypeScript/) (+wiki)
 - [Changelog] (https://github.com/Microsoft/TypeScript/wiki/What's-new-in-TypeScript)
 
-[System Module Loader](https://github.com/systemjs/systemjs/wiki)
+[System Module Loader](https://github.com/systemjs/systemjs/wiki)  
+At some stage, you will need to read up on it. 
 
 
 
