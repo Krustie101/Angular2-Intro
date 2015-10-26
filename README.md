@@ -1,6 +1,8 @@
 # Angular2-Intro
 This repo contains a demo project used for a presentation introducing angular 2 & typescript intended for Java developers so the explanation about the frontend setup will be long-winded (the project itself originated from https://github.com/pkozlowski-opensource/ng2-play). The project is set up to run with Spring Boot. For the moment, the Spring Boot application only serves the angular 2 application, but soon it will also be used as a rest service controller. I will assume that you are familiar with Maven & Spring Boot, all major Java IDE's have excellent support for them anyway.
 
+A quick starter skeleton version can be found at [Angular2-SpringBoot](https://github.com/Krustie101/Angular2-SpringBoot).
+
 For now, I want to focus on building angular 2 applications and try to keep the build & module loading process as simple as possible. 
 
 The main project consists of two sub projects
