@@ -108,7 +108,7 @@ At some stage, you will need to read up on it.
 
 [RxJS](https://github.com/Reactive-Extensions/RxJS)  
 RxJS next (v5 alpha)  is used under the hood of angular 2 but they are planning to expose the RxJS interfaces soon. You do not need much of RxJS knowledge to develop in angular 2 but it might be interesting to learn it in the long run.  
-RxJS is the javascript version of [Reactive Extensions](http://reactivex.io/), implementations in multiple languages are available. Also Java is well supported.
+RxJS is the javascript version of [Reactive Extensions](http://reactivex.io/). Implementations in multiple languages are available, also Java is well supported.
 
 
 
