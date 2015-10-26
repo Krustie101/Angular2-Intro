@@ -3,7 +3,7 @@ This repo contains a demo project used for a presentation introducing angular 2 
 
 A quick starter skeleton version can be found at [Angular2-SpringBoot](https://github.com/Krustie101/Angular2-SpringBoot).
 
-For now, I want to focus on developing angular 2 applications and try to keep the build & module loading process as simple as possible. So no webpack or jspm at the moment, these are moving targets anyway. 
+For now, I want to focus on developing angular 2 applications and try to keep the build & module loading process as simple as possible. So no webpack or jspm at the moment, the module loader eco-system has not settled yet anyway.
 
 The main project consists of two sub projects
 - frontend: contains the Angular 2 code   
@@ -106,6 +106,9 @@ Typescript:
 [System Module Loader](https://github.com/systemjs/systemjs/wiki)  
 At some stage, you will need to read up on it. 
 
+[RxJS](https://github.com/Reactive-Extensions/RxJS)  
+RxJS next (v5 alpha)  is used under the hood of angular 2 but they are planning to expose the RxJS interfaces soon. You do not need much of RxJS knowledge to develop in angular 2 but it might be interesting to learn it in the long run.  
+RxJS is the javascript version of [Reactive Extensions](http://reactivex.io/), implementations in multiple languages are available. Also Java is well supported.
 
 
 
