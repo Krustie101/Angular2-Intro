@@ -53,7 +53,7 @@ Now we are ready to build the frontend project to the `dist` folder. For this pu
 - build-watch-resources
 
 
-They all start with the build step that cleans the `dist` folder, copies the necessary javascript libraries to the `dist/lib` folder, copies the html files and templates from the `src` to the `dist` folder and ultimately transpiles the ts files from the `src` to the `dist` folder using the tsc command. When renaming files, the old version of javascript files are not removed so it is a good idea to start the day with a clean build.
+They all start with the build step that cleans the `dist` folder, copies the necessary javascript libraries to the `dist/lib` folder, copies the html files and templates from the `src` to the `dist` folder and ultimately transpiles the ts files from the `src` to the `dist` folder using the `tsc` command. When renaming files, the old version of javascript files are not removed so it is a good idea to start the day with a clean build.
 
 The typescript compilation step will use the tsconfig.json file. The same one will also be picked up automatically by the latest version of the modern IDE's (e.g. Visual Studio Code & Webstorm 11 (almost released)).
 
@@ -68,9 +68,10 @@ If you open Developer Tools in your browser you should see the typescript files 
 Now to the other type of build tasks:
 - build-watch
 - build-watch-resources
-Both of them will after the clean build watch for changes in html files in the `src` folder of your frontend project and copy any changed files to the `dist` folder. That is all that the second will do.
 
-The first one will instruct the tsc command to watch for changes in the ts files and perform an incremental compilation on any change. You will not need this if your IDE does the incremental compilation itself based on the tsconfig.json file (they will also delegate tot the tsc command anyhow), in this case running `build-watch-resources` is enough during development. 
+Both of them will, after the clean build, watch for changes in html files in the `src` folder of your frontend project and copy any changed files to the `dist` folder. That is in fact all that the second task will do.
+
+The first one will instruct the `tsc` command to watch for changes in the ts files and perform an incremental compilation on any change. You will not need this if your IDE does the incremental compilation itself based on the tsconfig.json file (they will also delegate tot the `tsc` command anyhow), in this case running `build-watch-resources` is enough during development. 
 
 I had good experiences concerning typescript code completion with the following IDE's:
 - Webstorm 11 (pre release). This also has good completion & highlighting for angular 2 in html files and inline templates. Refactoring was also a breeze. It also has good support for Gulp.
