@@ -77,7 +77,7 @@ I had good experiences concerning typescript code completion with the following 
 - Webstorm 11 (pre release). This also has good completion & highlighting for angular 2 in html files and inline templates. Refactoring was also a breeze. It also has good support for Gulp.
 - Visual Studio Code. This is a free editor based on Atom that focuses on web development. Code completion for typescript is very good, but there is no completion or highlighing for angular 2 in inline templates.
 
-I have no experience with Visual Studio, but expect it to offer good support as well. Eclipse seems to be lagging: two typescript plugins that I know of are eclipse-typescript from palantir and typecs. I did not look at them for a few months now because the solution offered by Webstorm & VS Code where keeping up better with the pace of typescript changes.
+I have no experience with Visual Studio, but expect it to offer good support as well. Eclipse seems to be lagging: two typescript plugins that I know of are eclipse-typescript (from palantir) and typecs. I did not look at them for a few months now because the solution offered by Webstorm & VS Code where keeping up better with the pace of typescript changes.
 
 In order to start develping in Webstorm 11 open the frontend folder as a project, opening the main folder as a project got the typescript compiler confused. Then you just need to go the Typescript configuration in `File -> Settings` and configure to use tsconfig.json (2 checkboxes), enable the typescript compiler and instruct it to track changes. 
 If you right-click on your gulpfile.js, you can get a list of gulp tasks by clicking `Show Gulp Tasks`. Mark your `dist` folder as an excluded directory and now you are good to go.
