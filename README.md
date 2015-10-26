@@ -3,7 +3,7 @@ This repo contains a demo project used for a presentation introducing angular 2 
 
 A quick starter skeleton version can be found at [Angular2-SpringBoot](https://github.com/Krustie101/Angular2-SpringBoot).
 
-For now, I want to focus on developing angular 2 applications and try to keep the build & module loading process as simple as possible. So no webpack or jspm at the moment, the module loader eco-system has not settled yet anyway.
+For now, I want to focus on developing angular 2 applications and try to keep the build & module loading process as simple as possible and stick to the current setup used by angular 2 in their quick starts.
 
 The main project consists of two sub projects
 - frontend: contains the Angular 2 code   
